@@ -67,6 +67,7 @@ Falls du IntelliJ IDEA oder Eclipse nutzt:
  - 🔧 style.css erstellen
  - 🔧 JumpAndRun Applikation wesentlich verkleinern
  - 🔧 Text und Audio im Intro synchronisieren
+ - 🔧 Abbrechen Buttons in den Dialogen zurück zum MainMenü führen
  
 # 💀 Entwickler
 - 👤 Ulf Treichel
