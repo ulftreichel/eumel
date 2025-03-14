@@ -1,12 +1,12 @@
 # <p align="center">Projektwoche vom 10.03.-14.03.25</p>
 
-# 🎃 Eumels Höllisch Süßes Abenteuer
+# <p align="center">🎃 Eumels Höllisch Süßes Abenteuer</p>
 Ein Halloween-Jump-'n'-Run mit Bonbons, Skeletten und jeder Menge Spaß!
 
-## 🕹️ Über das Spiel
+## <p align="center">🕹️ Über das Spiel</p>
 In diesem 2D-Jump-'n'-Run begleitest du Eumel, unseren mutigen Helden, der sich mit magischen Bonbons gegen eine Armee von fiesen Skeletten verteidigt. Einige Gegner feuern sogar brennende Jack-O’-Lanterns – also sei vorsichtig! Schlage dich durch verschiedene Level voller Halloween-Atmosphäre und besiege die untoten Plagegeister!
 
-## 🎯 Features
+## <p align="center">🎯 Features</p>
 - ✅ Jump-'n'-Run-Action: Laufe, springe und weiche Angriffen aus!
 - ✅ Magische Bonbon-Waffe: Verteidige dich mit süßer Munition!
 - ✅ Schatztruhen
@@ -18,7 +18,7 @@ In diesem 2D-Jump-'n'-Run begleitest du Eumel, unseren mutigen Helden, der sich 
 - ✅ die Möglichkeit sich wiederzubeleben, indem man eine einfache Frage beantwortet 😊
 - ✅ Highscoreliste
 
-## 🚀 Installation & Start
+## <p align="center">🚀 Installation & Start</p>
 Voraussetzungen
 - Java 17+ muss installiert sein [(Download hier)](https://adoptium.net/)
 - Falls du Maven nutzt, stelle sicher, dass es installiert ist [(Download hier)](https://maven.apache.org/download.cgi)
@@ -44,15 +44,15 @@ Falls du IntelliJ IDEA oder Eclipse nutzt:
 2. Projekt SDK jetBrains 21.0.6
 3. als Java Application ausführen (Main-Klasse auswählen)
 
-## 🎮 Steuerung
+## <p align="center">🎮 Steuerung</p>
 - Standardtasten
 - freie Auswahl der Tasten in den Einstellungen
 - Lautstärkesteuerung in den Einstellungen
 
-## 🖼️ Screenshots
+## <p align="center">🖼️ Screenshots</p>
 ![Beschreibung des Bildes](src/main/resources/images/screenshots.png)
 
-## 🏆 To-Do (Geplante Features)
+## <p align="center">🏆 To-Do (Geplante Features)</p>
  - ❌ Spiel speichern und laden
  - ❌ Mehr Soundeffekte
  - ❌ Mehr Level & Gegner
@@ -62,7 +62,7 @@ Falls du IntelliJ IDEA oder Eclipse nutzt:
  - ❌ Held und Gegner besser animieren
  - ❌ mehr Fragen Integrieren zum Wiederbeleben
 
-## 🚨 FixMe – Noch in Arbeit! 🛠️
+## <p align="center">🚨 FixMe – Noch in Arbeit! 🛠️</p>
 #### <p align="center">nach Abgabe am 14.03.</p>
  - 🔧 style.css erstellen
  - 🔧 JumpAndRun Applikation wesentlich verkleinern
