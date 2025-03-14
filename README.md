@@ -53,6 +53,7 @@ Falls du IntelliJ IDEA oder Eclipse nutzt:
 ![Beschreibung des Bildes](src/main/resources/images/screenshots.png)
 
 ## 🏆 To-Do (Geplante Features)
+ - ❌ Abbrechen Buttons in den Dialogen zurück zum MainMenü
  - ❌ Spiel speichern und laden
  - ❌ Mehr Soundeffekte
  - ❌ Mehr Level & Gegner
