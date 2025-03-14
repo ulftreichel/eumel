@@ -1,4 +1,4 @@
-# <p align="center">Projektwoche</p>
+# <p align="center">Projektwoche vom 10.03.-14.03.25<br>Angefangen am 06.03. Vorstellung 14.03.</p>
 
 # 🎃 Eumels Höllisch Süßes Abenteuer
 Ein Halloween-Jump-'n'-Run mit Bonbons, Skeletten und jeder Menge Spaß!
@@ -15,7 +15,7 @@ In diesem 2D-Jump-'n'-Run begleitest du Eumel, unseren mutigen Helden, der sich 
 - ✅ Halloween-Setting: Düstere Wälder, gruselige Hintergründe!
 - ✅ Power-Ups & neue Bonbon-Typen
 - ✅ stimmungsvolle Musik
-- ✅ die Möglichkeit sich wiederzubeleben, indem man eine einfache Frage beantwortet
+- ✅ die Möglichkeit sich wiederzubeleben, indem man eine einfache Frage beantwortet 😊
 - ✅ Highscoreliste
 
 ## 🚀 Installation & Start
@@ -53,7 +53,6 @@ Falls du IntelliJ IDEA oder Eclipse nutzt:
 ![Beschreibung des Bildes](src/main/resources/images/screenshots.png)
 
 ## 🏆 To-Do (Geplante Features)
- - ❌ Abbrechen Buttons in den Dialogen zurück zum MainMenü
  - ❌ Spiel speichern und laden
  - ❌ Mehr Soundeffekte
  - ❌ Mehr Level & Gegner
@@ -62,7 +61,11 @@ Falls du IntelliJ IDEA oder Eclipse nutzt:
  - ❌ Spezialfähigkeiten für Eumel
  - ❌ Held und Gegner besser animieren
  - ❌ mehr Fragen Integrieren zum Wiederbeleben
- - ❌ style.css fehlt
+
+## 🚨 FixMe – Noch in Arbeit! 🛠️
+ - 🔧 style.css erstellen
+ - 🔧 JumpAndRun Applikation wesentlich verkleinern
+ - 🔧 Text und Audio im Intro synchronisieren
  
 # 💀 Entwickler
 - 👤 Ulf Treichel
