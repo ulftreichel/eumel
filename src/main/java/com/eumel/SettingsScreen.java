@@ -13,6 +13,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.util.StringConverter;
 
 import java.util.HashMap;
 import java.util.List;
@@ -72,10 +73,22 @@ public class SettingsScreen {
 
         Label volumeLabel = new Label("Lautstärke:");
         volumeLabel.setStyle(style);
+
         Slider volumeSlider = new Slider(0, 1, dbDao.getVolume());
         volumeSlider.setShowTickLabels(true);
         volumeSlider.setShowTickMarks(true);
         volumeSlider.setPrefWidth(300);
+
+        volumeSlider.setLabelFormatter(new StringConverter<Double>() {
+            @Override
+            public String toString(Double value) {
+                return String.valueOf((int) (value * 100));
+            }
+            @Override
+            public Double fromString(String string) {
+                return Double.valueOf(string) / 100;
+            }
+        });
         volumeSlider.valueProperty().addListener((obs, oldVal, newVal) -> {
             audioManager.setVolume(newVal.doubleValue());
             dbDao.saveSetting("volume", String.valueOf(newVal.doubleValue()));
