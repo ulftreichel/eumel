@@ -1,4 +1,4 @@
-# <p align="center">Projektwoche vom 10.03.-14.03.25<br>Angefangen am 06.03. Vorstellung 14.03.</p>
+# <p align="center">Projektwoche vom 10.03.-14.03.25</p>
 
 # 🎃 Eumels Höllisch Süßes Abenteuer
 Ein Halloween-Jump-'n'-Run mit Bonbons, Skeletten und jeder Menge Spaß!
