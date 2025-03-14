@@ -63,7 +63,7 @@ Falls du IntelliJ IDEA oder Eclipse nutzt:
  - ❌ mehr Fragen Integrieren zum Wiederbeleben
 
 ## 🚨 FixMe – Noch in Arbeit! 🛠️
-nach Abgabe am 14.03.
+# <p align="center">nach Abgabe am 14.03.</p>
  - 🔧 style.css erstellen
  - 🔧 JumpAndRun Applikation wesentlich verkleinern
  - 🔧 Text und Audio im Intro synchronisieren
