@@ -13,11 +13,13 @@ public class AudioManager {
     private MediaPlayer effectPlayer;
     private MediaPlayer bossPlayer;
     private MediaPlayer gamePlayer;
+    private MediaPlayer introPlayer;
     private Random random = new Random();
     private long lastEffectTime = 0;
     private long nextEffectInterval = 0;
     private boolean isMenuActive = false;
     private boolean isBossFight = false;
+    private boolean isIntro = false;
     private JumpAndRun game;
     private DBDAO dbDAO;
     private double gameVolumeMultiplier = 0.5;
@@ -99,6 +101,7 @@ public class AudioManager {
         this.isBossFight = isBossFight;
 
         menuPlayer.stop();
+
         gamePlayer.setVolume(dbDAO.getVolume() * gameVolumeMultiplier);
         gamePlayer.play();
         if (JumpAndRun.debugMusic) {
@@ -125,6 +128,17 @@ public class AudioManager {
                 }
             };
             effectTimer.start();
+        }
+    }
+
+    public void startIntroAudio(boolean isIntro){
+        stopAllAudio();
+        isMenuActive = false;
+        this.isIntro = isIntro;
+        menuPlayer.stop();
+        gamePlayer.stop();
+        if (JumpAndRun.debugMusic) {
+            System.out.println("Intro-Audio gestartet");
         }
     }
 
@@ -157,8 +171,10 @@ public class AudioManager {
         if (menuPlayer != null) menuPlayer.stop();
         if (gamePlayer != null) gamePlayer.stop();
         if (bossPlayer != null) bossPlayer.stop();
+        if (introPlayer != null) introPlayer.stop();
         isMenuActive = false;
         isBossFight = false;
+        isIntro = false;
     }
 
     public void setVolume(double volume) {

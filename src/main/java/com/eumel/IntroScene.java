@@ -9,6 +9,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
@@ -52,7 +53,6 @@ public class IntroScene {
             System.err.println("Fehler beim Laden der Schriftart Riffic.ttf im Intro");
             customFont = Font.font("Arial", 20);
         }
-
         introImages = new ArrayList<>();
         for (int i = 1; i <= 7; i++) {
             String path = "/intro/intro" + i + ".png";
@@ -71,7 +71,6 @@ public class IntroScene {
         }
 
         subtitles = loadSubtitlesFromSrt("/intro/story.srt");
-
         try {
             String audioPath = getClass().getResource("/intro/story.mp3").toExternalForm();
             Media introMedia = new Media(audioPath);
@@ -146,7 +145,6 @@ public class IntroScene {
         Scene introScene = new Scene(introPane, 800, 600);
         stage.setScene(introScene);
         stage.setTitle("Jump and Run - Intro");
-
         introView = new ImageView();
         if (!introImages.isEmpty()) {
             introView.setImage(introImages.get(0));
@@ -159,8 +157,8 @@ public class IntroScene {
 
         subtitleText = new Text();
         subtitleText.setFont(customFont);
-        subtitleText.setFill(javafx.scene.paint.Color.WHITE);
-        subtitleText.setStroke(javafx.scene.paint.Color.BLACK);
+        subtitleText.setFill(Color.WHITE);
+        subtitleText.setStroke(Color.BLACK);
         subtitleText.setStrokeWidth(1);
         subtitleText.setTextAlignment(TextAlignment.CENTER);
         subtitleText.setWrappingWidth(400);

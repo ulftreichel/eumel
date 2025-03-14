@@ -221,6 +221,7 @@ public class JumpAndRun extends Application {
             menuAnimation.stop();
             if (!dbDAO.isIntroShown()) {
                 introScene = new IntroScene(primaryStage, () -> startGame(primaryStage, 0, 0), dbDAO, false); // fromSettings = false
+                audioManager.startIntroAudio(true);
                 introScene.show();
             } else {
                 if (mediaPlayer != null) {
