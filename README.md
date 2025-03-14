@@ -69,7 +69,7 @@ Falls du IntelliJ IDEA oder Eclipse nutzt:
  - 🔧 Text und Audio im Intro synchronisieren
  - 🔧 Abbrechen Buttons in den Dialogen zurück zum MainMenü führen
  
-# 💀 Entwickler
+# 😊 Entwickler
 - 👤 Ulf Treichel
 - 📧 Kontakt: info@skill-net.pro
 - 📌 GitHub: github.com/ulftreichel
