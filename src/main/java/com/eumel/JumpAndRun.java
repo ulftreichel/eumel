@@ -32,7 +32,7 @@ public class JumpAndRun extends Application {
 
     private DBDAO dbDAO;
     private int startLevel = 0;
-    private int startDesign = 13;
+    private int startDesign = 0;
     public static boolean debugMode = false;
     private boolean debugKollisionGround = false;
     private boolean debugPlattform = false;
