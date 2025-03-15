@@ -28,8 +28,8 @@ public class Level2 extends LevelDesign {
             throw new RuntimeException("Fehler beim Laden des Bildes plattform.png");
         }
 
-        // Initialisiere die 15 Designs
-        for (int i = 0; i < 15; i++) {
+        // Initialisiere nur 2 Designs zum Boss Test
+        for (int i = 0; i < 2; i++) {
             platformDesigns.add(new ArrayList<>());
             holeDesigns.add(new ArrayList<>());
             diamondDesigns.add(new ArrayList<>());
@@ -57,8 +57,8 @@ public class Level2 extends LevelDesign {
         treasureChestDesigns.get(0).add(new TreasureChest(650, 415));
         treasureChestDesigns.get(0).add(new TreasureChest(700, 415));
         powerupDesigns.get(0).add(new Powerup(750, 425, Powerup.PowerupType.SPEED_BOOST));
-        // Design 2
-        bossDesigns.get(1).add(new Boss(500, 295, 7500));
+        // Design 1
+        bossDesigns.get(1).add(new Boss(500, 295, 100));
     }
 
 
