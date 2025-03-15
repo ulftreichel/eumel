@@ -1,6 +1,6 @@
 # <p align="center">Projektwoche vom 10.03.-14.03.25</p>
 
-# <p align="center">🎃 Eumels Höllisch Süßes Abenteuer</p>
+# <p align="center">🎃 Eumels Höllish Süßes Abenteuer</p>
 Ein Halloween-Jump-'n'-Run mit Bonbons, Skeletten und jeder Menge Spaß!
 
 ## <p align="center">🕹️ Über das Spiel</p>
@@ -64,10 +64,7 @@ Falls du IntelliJ IDEA oder Eclipse nutzt:
 
 ## <p align="center">🚨 FixMe – Noch in Arbeit! 🛠️</p>
 #### <p align="center">nach Abgabe am 14.03.</p>
- - 🔧 style.css erstellen
- - 🔧 JumpAndRun Applikation wesentlich verkleinern
- - 🔧 Text und Audio im Intro synchronisieren
- - 🔧 Abbrechen Buttons in den Dialogen zurück zum MainMenü führen
+<!-- - 🔧 -->
  
 # <p align="center">😊 Entwickler</p>
 - 👤 Ulf Treichel
