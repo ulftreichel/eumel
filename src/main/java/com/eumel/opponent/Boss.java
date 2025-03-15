@@ -1,5 +1,6 @@
 package com.eumel.opponent;
 
+import com.eumel.GameEngine;
 import com.eumel.JumpAndRun;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -32,7 +33,7 @@ public class Boss {
     private static final long FRAME_DURATION = 75_000_000L;
     private double velocityY = 0;
     private boolean facingRight = false;
-    private boolean debugMode = JumpAndRun.debugMode;
+    private GameEngine gameEngine;
     private long stonePhaseStart = Long.MIN_VALUE;
     private static final long STONE_PHASE_DURATION = 30_000_000_000L;
     private boolean[] stonePhasesTriggered = new boolean[]{false, false, false};
@@ -52,6 +53,24 @@ public class Boss {
         lastFrameTime = System.nanoTime();
     }
 
+    public Boss(double x, double y, int health, GameEngine gameEngine) {
+        this(x, y, health);
+        this.gameEngine = gameEngine;
+    }
+
+    public void setGameEngine(GameEngine gameEngine) {
+        this.gameEngine = gameEngine;
+    }
+
+    // Neue Getter-Methoden
+    public double getX() {
+        return x;
+    }
+
+    public double getY() {
+        return y;
+    }
+
     private void initializeAnimator() {
         if (animations.get("idle") != null && animations.get("idle").length > 0) {
             imageView.setImage(animations.get("idle")[0]);
@@ -63,7 +82,7 @@ public class Boss {
             imageView.setOpacity(1.0);
             imageView.setVisible(true);
             imageView.setScaleX(facingRight ? 1.0 : -1.0);
-            if (debugMode) {
+            if (gameEngine != null && gameEngine.jumpAndRun.debugMode) {
                 System.out.println("Boss initialisiert: x=" + x + ", y=" + y + ", health=" + health + ", ScaleX=" + imageView.getScaleX());
             }
         } else {
@@ -145,8 +164,6 @@ public class Boss {
                 loadImage("/images/enemys/boss/player015.png"),
                 loadImage("/images/enemys/boss/player016.png")
         });
-        // Platzhalter für "jump"-Animation
-        // "jump"-Animation muss noch erstellt werden
         animations.put("jump", new Image[]{
                 loadImage("/images/enemys/boss/player001.png") // Platzhalter
         });
@@ -184,45 +201,44 @@ public class Boss {
             shoot(playerX, playerY, gamePane);
             lastShotTime = now;
             shotsRemaining--;
-            if (debugMode) System.out.println("Boss schießt, verbleibende Schüsse: " + shotsRemaining);
+            if (gameEngine != null && JumpAndRun.debugMode) {
+                System.out.println("Boss schießt, verbleibende Schüsse: " + shotsRemaining);
+            }
         }
 
-        // Steine bei 75%, 50%, 25% Gesundheit
         int maxHealth = 10000;
         double healthPercent = (double) health / maxHealth;
 
-        // Steinphasen nur auslösen, wenn der Boss Schaden genommen hat
         if (hitCount > 0) {
             if (healthPercent <= 0.75 && !stonePhasesTriggered[0]) {
                 stonePhaseStart = now;
                 stonePhasesTriggered[0] = true;
-                lastStoneDropTime = now; // Neuer Zeitstempel für Steine
-                if (debugMode) System.out.println("Steinphase bei 75% gestartet");
+                lastStoneDropTime = now;
+                if (gameEngine != null && JumpAndRun.debugMode) System.out.println("Steinphase bei 75% gestartet");
             } else if (healthPercent <= 0.50 && !stonePhasesTriggered[1]) {
                 stonePhaseStart = now;
                 stonePhasesTriggered[1] = true;
                 lastStoneDropTime = now;
-                if (debugMode) System.out.println("Steinphase bei 50% gestartet");
+                if (gameEngine != null && JumpAndRun.debugMode) System.out.println("Steinphase bei 50% gestartet");
             } else if (healthPercent <= 0.25 && !stonePhasesTriggered[2]) {
                 stonePhaseStart = now;
                 stonePhasesTriggered[2] = true;
                 lastStoneDropTime = now;
-                if (debugMode) System.out.println("Steinphase bei 25% gestartet");
+                if (gameEngine != null && JumpAndRun.debugMode) System.out.println("Steinphase bei 25% gestartet");
             }
         }
 
-        // Steine fallen lassen
         if (stonePhaseStart != Long.MIN_VALUE && now - stonePhaseStart <= STONE_PHASE_DURATION) {
             if (now - lastStoneDropTime >= 3_000_000_000L) {
                 FallingObject fallingObject = new FallingObject(playerX + (Math.random() * 100 - 50));
                 fallingObjects.add(fallingObject);
                 gamePane.getChildren().add(fallingObject.getImageView());
                 lastStoneDropTime = now;
-                if (debugMode) System.out.println("Stein fällt bei x=" + fallingObject.getX());
+                if (gameEngine != null && JumpAndRun.debugMode) System.out.println("Stein fällt bei x=" + fallingObject.getX());
             }
         } else if (stonePhaseStart != Long.MIN_VALUE && now - stonePhaseStart > STONE_PHASE_DURATION) {
             stonePhaseStart = Long.MIN_VALUE;
-            if (debugMode) System.out.println("Steinphase beendet");
+            if (gameEngine != null && JumpAndRun.debugMode) System.out.println("Steinphase beendet");
         }
 
         projectiles.removeIf(p -> !p.isActive());
@@ -245,7 +261,7 @@ public class Boss {
         currentAnimation = "attack1";
         currentFrame = 0;
         boolean movingRight = playerX > centerX;
-        PumpkinProjectile projectile = new PumpkinProjectile(centerX, centerY, movingRight, JumpAndRun.GROUND_LEVEL);
+        PumpkinProjectile projectile = new PumpkinProjectile(centerX, centerY, movingRight, GameEngine.GROUND_LEVEL);
         projectiles.add(projectile);
         gamePane.getChildren().add(projectile.getImageView());
     }
@@ -254,23 +270,23 @@ public class Boss {
         if (isActive) {
             health -= damage;
             hitCount++;
-            if (debugMode) {
+            if (gameEngine != null && JumpAndRun.debugMode) {
                 System.out.println("Boss nimmt Schaden: " + damage + ", Treffer: " + hitCount + ", Gesundheit: " + health);
             }
 
             if (hitCount == 5) {
                 isMoving = true;
                 shotsRemaining = 5;
-                if (debugMode) System.out.println("Boss beginnt zu laufen und schießt 5 Mal");
+                if (gameEngine != null && JumpAndRun.debugMode) System.out.println("Boss beginnt zu laufen und schießt 5 Mal");
             } else if (hitCount > 5 && hitCount % 5 == 0) {
                 shotsRemaining = 5 + ((hitCount / 5) - 1) * 5;
-                if (debugMode) System.out.println("Boss schießt " + shotsRemaining + " Mal");
+                if (gameEngine != null && JumpAndRun.debugMode) System.out.println("Boss schießt " + shotsRemaining + " Mal");
             }
 
             if (health <= 0) {
                 isActive = false;
                 imageView.setVisible(false);
-                if (debugMode) System.out.println("Boss besiegt!");
+                if (gameEngine != null && JumpAndRun.debugMode) System.out.println("Boss besiegt!");
             }
         }
     }
@@ -282,7 +298,7 @@ public class Boss {
                 imageView.setImage(frames[currentFrame]);
                 currentFrame = (currentFrame + 1) % frames.length;
                 lastFrameTime = now;
-                if (debugMode) System.out.println("Frame gewechselt: " + currentAnimation + ", Frame: " + currentFrame);
+                if (gameEngine != null && JumpAndRun.debugMode) System.out.println("Frame gewechselt: " + currentAnimation + ", Frame: " + currentFrame);
             } else {
                 System.err.println("Fehler: Animation " + currentAnimation + " enthält keine gültigen Frames.");
             }
@@ -299,7 +315,7 @@ public class Boss {
         if (!newAnimation.equals(currentAnimation)) {
             currentAnimation = newAnimation;
             currentFrame = 0;
-            if (debugMode) System.out.println("Animation gewechselt zu: " + currentAnimation);
+            if (gameEngine != null && JumpAndRun.debugMode) System.out.println("Animation gewechselt zu: " + currentAnimation);
         }
 
         imageView.setScaleX(facingRight ? 1.0 : -1.0);
