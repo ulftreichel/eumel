@@ -50,7 +50,7 @@ Falls du IntelliJ IDEA oder Eclipse nutzt:
 - Lautstärkesteuerung in den Einstellungen
 
 ## <p align="center">🖼️ Screenshots</p>
-![Beschreibung des Bildes](src/main/resources/images/screenshots.png)
+![Screenshots](src/main/resources/images/screenshots.png)
 
 ## <p align="center">🏆 To-Do (Geplante Features)</p>
  - ❌ Spiel speichern und laden
