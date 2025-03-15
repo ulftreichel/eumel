@@ -1,0 +1,107 @@
+/* Stile für Buttons in Dialogen */
+.dialog-button {
+    -fx-font-size: 20px;
+    -fx-text-fill: white;
+    -fx-background-color: rgba(0, 0, 0, 0.5);
+    -fx-font-family: "Riffic Free Bold";
+}
+
+/* Stile für den DialogPane */
+.custom-dialog {
+    -fx-background-color: rgba(51, 51, 51, 0.8);
+}
+
+/* Stile für Labels in Dialogen */
+.dialog-label {
+    -fx-text-fill: white;
+    -fx-font-size: 24px;
+    -fx-font-family: "Riffic Free Bold";
+}
+
+/* Größere Labels */
+.dialog-label-large {
+    -fx-text-fill: white;
+    -fx-font-size: 24px;
+    -fx-font-family: "Riffic Free Bold";
+}
+
+/* Stile für TextFields in Dialogen */
+.dialog-text-field {
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-font-family: "Riffic Free Bold";
+    -fx-background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Stile für den Alert-Dialog */
+.custom-alert .header-panel {
+    -fx-background-color: rgba(51, 51, 51, 0.8);
+}
+
+.custom-alert .header-panel .label {
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-family: "Riffic Free Bold";
+}
+
+.custom-alert .content {
+    -fx-text-fill: white;
+    -fx-background-color: rgba(51, 51, 51, 0.8);
+    -fx-font-size: 18px;
+    -fx-font-family: "Riffic Free Bold";
+}
+
+.custom-alert .button-bar {
+    -fx-background-color: rgba(51, 51, 51, 0.8);
+    -fx-padding: 10;
+}
+
+.custom-alert .button {
+    -fx-font-size: 20px;
+    -fx-text-fill: white;
+    -fx-background-color: rgba(51, 51, 51, 0.8);
+    -fx-font-family: "Riffic Free Bold";
+    -fx-border-width: 0;
+    -fx-background-insets: 0;
+}
+
+/* Stile für die Highscore-Szene */
+.highscore-root {
+    -fx-background-color: rgba(51, 51, 51, 0.8);
+}
+
+.highscore-pane {
+    -fx-alignment: center;
+}
+
+.highscore-list-pane {
+    -fx-background-color: rgba(0, 0, 0, 0.5);
+    -fx-max-width: 300;
+    -fx-pref-height: 400;
+}
+
+.highscore-list {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-family: "Riffic Free Bold";
+    -fx-font-size: 16px;
+    -fx-control-inner-background: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+    -fx-max-width: 300;
+    -fx-pref-height: 400;
+}
+
+.highscore-list .list-cell {
+    -fx-text-fill: white;
+    -fx-alignment: center;
+    -fx-background-color: transparent;
+    -fx-font-family: "Riffic Free Bold";
+    -fx-font-size: 16px;
+}
+
+/* Stile für die GameOver-Szene */
+.game-over-root {
+    -fx-background-color: rgba(51, 51, 51, 0.8);
+    -fx-alignment: center;
+}
