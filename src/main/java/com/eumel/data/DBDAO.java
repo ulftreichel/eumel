@@ -57,7 +57,7 @@ public class DBDAO {
             stmt.execute("INSERT OR IGNORE INTO settings (key, value) VALUES ('jump_primary', 'SPACE')");
             stmt.execute("INSERT OR IGNORE INTO settings (key, value) VALUES ('jump_secondary', 'UP')");
             stmt.execute("INSERT OR IGNORE INTO settings (key, value) VALUES ('shoot_primary', 'W')");
-            stmt.execute("INSERT OR IGNORE INTO settings (key, value) VALUES ('shoot_secondary', 'ENTER')");
+            stmt.execute("INSERT OR IGNORE INTO settings (key, value) VALUES ('shoot_secondary', 'CONTROL')");
             stmt.execute("INSERT OR IGNORE INTO settings (key, value) VALUES ('introShown', 'false')");
         }
 
