@@ -127,6 +127,7 @@ public class SettingsScreen {
         replayIntroButton.setStyle(buttonStyle);
         replayIntroButton.setPrefWidth(300);
         replayIntroButton.setOnAction(e -> {
+            audioManager.startIntroAudio(true);
             IntroScene intro = new IntroScene(settingsStage, () -> settingsAnimation.play(), dbDao, true);
             intro.show();
         });
