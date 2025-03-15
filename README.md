@@ -42,7 +42,7 @@ Falls du IntelliJ IDEA oder Eclipse nutzt:
 
 1. Das Projekt in der IDE öffnen
 2. Projekt SDK jetBrains 21.0.6
-3. als Java Application ausführen (Main-Klasse auswählen)
+3. als Java Application ausführen (JumpAndRun)
 
 ## <p align="center">🎮 Steuerung</p>
 - Standardtasten
