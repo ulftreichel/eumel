@@ -41,7 +41,7 @@ public class IntroScene {
         this.stage = stage;
         this.onComplete = onComplete;
         this.dbDao = dbDao;
-        this.fromSettings = fromSettings; // true = aus Settings, false = aus Spielstart
+        this.fromSettings = fromSettings;
         this.introPane = new Pane();
         loadResources();
         setupIntro();
@@ -144,7 +144,7 @@ public class IntroScene {
     private void setupIntro() {
         Scene introScene = new Scene(introPane, 800, 600);
         stage.setScene(introScene);
-        stage.setTitle("Jump and Run - Intro");
+        stage.setTitle("Eumels Höllish Süßes Abenteuer - Intro");
         introView = new ImageView();
         if (!introImages.isEmpty()) {
             introView.setImage(introImages.get(0));
