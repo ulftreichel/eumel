@@ -20,9 +20,9 @@ import javafx.stage.Stage;
 public class JumpAndRun extends Application {
 
     private DBDAO dbDAO;
-    private int startLevel = 1;
+    private int startLevel = 0;
     private int startDesign = 0;
-    public static boolean debugMode = true;
+    public static boolean debugMode = false;
     public static boolean debugKollisionGround = false;
     public static boolean debugPlattform = false;
     public static boolean debugKollisionBox = false;
@@ -32,13 +32,14 @@ public class JumpAndRun extends Application {
     public static boolean debugGround = false;
     public static boolean debugLabel = false;
     public static boolean debugEnemy  = false;
+    public static boolean debugTaskAnswers = false;
     private boolean hasLoggedBossHealthBarError = false;
     public static boolean debugProjektil = false;
     public static boolean debugMusic = false;
     public static boolean debugMainFrame = false;
     private static boolean introShown = true;
     private final int MAX_LEVELS = 10;
-    static Font customFont;
+    public static Font customFont;
     private Label scoreLabel;
     private Label mousePositionLabel;
     private ImageView backgroundView;
