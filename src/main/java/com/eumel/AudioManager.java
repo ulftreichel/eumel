@@ -24,6 +24,7 @@ public class AudioManager {
     private DBDAO dbDAO;
     private double gameVolumeMultiplier = 0.5;
     private double effectVolumeMultiplier = 1.0;
+    private AnimationTimer effectTimer;
 
     public AudioManager(JumpAndRun game, DBDAO dbDAO) {
         this.game = game;
@@ -78,7 +79,7 @@ public class AudioManager {
             System.out.println("Menü-Audio gestartet");
         }
 
-        AnimationTimer effectTimer = new AnimationTimer() {
+        effectTimer = new AnimationTimer() {
             @Override
             public void handle(long now) {
                 if (!isMenuActive) {
@@ -116,7 +117,7 @@ public class AudioManager {
                 System.out.println("Boss-Audio gestartet");
             }
         } else {
-            AnimationTimer effectTimer = new AnimationTimer() {
+            effectTimer = new AnimationTimer() {
                 @Override
                 public void handle(long now) {
                     if (now - lastEffectTime >= nextEffectInterval) {
@@ -172,6 +173,12 @@ public class AudioManager {
         if (gamePlayer != null) gamePlayer.stop();
         if (bossPlayer != null) bossPlayer.stop();
         if (introPlayer != null) introPlayer.stop();
+        if (effectTimer != null) {
+            effectTimer.stop();
+            if (JumpAndRun.debugMusic) {
+                System.out.println("EffectTimer gestoppt");
+            }
+        }
         isMenuActive = false;
         isBossFight = false;
         isIntro = false;
