@@ -41,7 +41,7 @@ public class TaskGenerator {
             int bitDepth = (rand.nextInt(3) + 1) * 8;   // Farbtiefe: 8, 16 oder 24 Bit
             int compression = rand.nextInt(81) + 10;    // Kompression: 10-90%
 
-            double sizeInBytes = (width * height * bitDepth) / 8.0 * (1 - compression / 100.0); // Mit Kompression
+            double sizeInBytes = (width * height * bitDepth) / 8.0 * (compression / 100.0); // Mit Kompression
             String[] units = {"KB", "MB", "KiB", "MiB"};
             double sizeInUnit;
             do {
