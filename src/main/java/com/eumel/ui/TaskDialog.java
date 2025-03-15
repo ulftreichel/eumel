@@ -12,6 +12,8 @@ import javafx.stage.Stage;
 import java.util.Objects;
 import java.util.Optional;
 
+import static com.eumel.JumpAndRun.debugTaskAnswers;
+
 public class TaskDialog {
     private final JumpAndRun jumpAndRun;
     private final GameEngine gameEngine;
@@ -81,32 +83,72 @@ public class TaskDialog {
         });
 
         Optional<String> result = dialog.showAndWait();
+        String answer = result.orElse(null);
+        if (debugTaskAnswers) {
+            System.out.println("Answer String: " + answer);
+        }
         if (result.isPresent()) {
             String resultValue = result.get().trim().replace(",", ".");
-            if ("CANCEL".equals(resultValue)) {
+            if ("CANCEL".equals(answer)) {
                 if (JumpAndRun.debugMode) System.out.println("Abbrechen geklickt, kehre zum Hauptmenü zurück...");
                 jumpAndRun.getAudioManager().stopAllAudio();
                 new MainMenu(jumpAndRun, dbDAO, primaryStage).show();
-            } else if (resultValue.equals(task.getAnswer())) {
-                gameEngine.revivePlayer(primaryStage);
             } else {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Falsche Antwort");
-                alert.setHeaderText("Leider falsch!");
-                alert.setContentText("Deine Antwort war '" + resultValue + "', aber es sollte '" + task.getAnswer() + "' sein. Spiel vorbei!");
-                DialogPane alertPane = alert.getDialogPane();
-                alertPane.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/style.css")).toExternalForm());
-                alertPane.getStyleClass().add("custom-alert");
-                alertPane.setPrefSize(600, 200);
-                UIUtils.setStageIcon((Stage) alertPane.getScene().getWindow());
-                alert.showAndWait();
-                if (JumpAndRun.debugMode) System.out.println("Alert geschlossen, kehre zum Hauptmenü zurück...");
-                jumpAndRun.getAudioManager().stopAllAudio();
-                new MainMenu(jumpAndRun, dbDAO, primaryStage).show();
+                try {
+                    // erwartete Antwort
+                    String normalizedCorrectAnswer = task.getAnswer().trim().replace(",", ".");
+                    double playerAnswer = Double.parseDouble(resultValue);
+                    double correctAnswer = Double.parseDouble(normalizedCorrectAnswer);
+
+                    // Numerischer Vergleich mit kleiner Toleranz
+                    double tolerance = 0.0001; // Toleranz für Rundungsfehler
+                    if (Math.abs(playerAnswer - correctAnswer) < tolerance) {
+                        gameEngine.revivePlayer(primaryStage);
+                        if (debugTaskAnswers) {
+                            System.out.println("Richtige Antwort: " + correctAnswer + " - Erwartete Antwort: " + playerAnswer);
+                        }
+                    } else {
+                        if (debugTaskAnswers) {
+                            System.out.println("Falsche Antwort: " + correctAnswer + " - Erwartete Antwort: " + playerAnswer);
+                        }
+                        showErrorDialog(resultValue, task.getAnswer());
+                    }
+                } catch (NumberFormatException e) {
+                    // Falls eine der Antworten keine Zahl ist, String-Vergleich als Fallback
+                    String normalizedCorrectAnswer = task.getAnswer().trim();
+                    if (normalizedCorrectAnswer.equals(resultValue)) {
+                        gameEngine.revivePlayer(primaryStage);
+                        if (debugTaskAnswers) {
+                            System.out.println("Richtige Antwort (Text): " + task.getAnswer() + " - Erwartete Antwort: " + resultValue);
+                        }
+                    } else {
+                        if (debugTaskAnswers) {
+                            System.out.println("Falsche Antwort (Text): " + task.getAnswer() + " - Erwartete Antwort: " + resultValue);
+                        }
+                        showErrorDialog(resultValue, task.getAnswer());
+                    }
+                }
             }
         } else {
             jumpAndRun.getAudioManager().stopAllAudio();
             new MainMenu(jumpAndRun, dbDAO, primaryStage).show();
         }
     }
+
+    private void showErrorDialog(String playerAnswer, String correctAnswer) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Falsche Antwort");
+        alert.setHeaderText("Leider falsch!");
+        alert.setContentText("Deine Antwort war '" + playerAnswer + "', aber es sollte '" + correctAnswer + "' sein. Spiel vorbei!");
+        DialogPane alertPane = alert.getDialogPane();
+        alertPane.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/style.css")).toExternalForm());
+        alertPane.getStyleClass().add("custom-alert");
+        alertPane.setPrefSize(600, 200);
+        UIUtils.setStageIcon((Stage) alertPane.getScene().getWindow());
+        alert.showAndWait();
+        if (JumpAndRun.debugMode) System.out.println("Alert geschlossen, kehre zum Hauptmenü zurück...");
+        jumpAndRun.getAudioManager().stopAllAudio();
+        new MainMenu(jumpAndRun, dbDAO, primaryStage).show();
+    }
+
 }
