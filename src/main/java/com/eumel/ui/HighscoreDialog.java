@@ -1,9 +1,8 @@
 package com.eumel.ui;
 
 import com.eumel.JumpAndRun;
-import com.eumel.GameEngine; // Neue Import-Anweisung
+import com.eumel.GameEngine;
 import com.eumel.data.DBDAO;
-import com.eumel.ui.UIUtils;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -16,13 +15,13 @@ import java.util.Objects;
 
 public class HighscoreDialog {
     private final JumpAndRun jumpAndRun;
-    private final GameEngine gameEngine; // Neue Instanzvariable
+    private final GameEngine gameEngine;
     private final DBDAO dbDAO;
     private final Stage primaryStage;
 
     public HighscoreDialog(JumpAndRun jumpAndRun, GameEngine gameEngine, DBDAO dbDAO, Stage primaryStage) {
         this.jumpAndRun = jumpAndRun;
-        this.gameEngine = gameEngine; // Initialisierung
+        this.gameEngine = gameEngine;
         this.dbDAO = dbDAO;
         this.primaryStage = primaryStage;
     }
@@ -57,7 +56,7 @@ public class HighscoreDialog {
         submitButton.setOnAction(e -> {
             String name = nameField.getText().trim();
             if (!name.isEmpty()) {
-                dbDAO.saveHighscore(name, gameEngine.getScore()); // Zugriff auf den Score über gameEngine
+                dbDAO.saveHighscore(name, gameEngine.getScore());
                 new HighscoreView(jumpAndRun, dbDAO, primaryStage).show();
             } else {
                 new MessageDialog().show("Name darf nicht leer sein!", primaryStage);
@@ -65,8 +64,7 @@ public class HighscoreDialog {
         });
     }
 
-    // Getter für interne Verwendung
     public int getScore() {
-        return gameEngine.getScore(); // Zugriff über gameEngine
+        return gameEngine.getScore();
     }
 }

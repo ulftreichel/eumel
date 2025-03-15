@@ -82,7 +82,6 @@ public class MainMenu {
         });
     }
 
-    // Getter für interne Verwendung
     public int getStartLevel() {
         return jumpAndRun.getStartLevel();
     }

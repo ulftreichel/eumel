@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 
 public class PauseDialog {
     private final JumpAndRun jumpAndRun;
-    private final GameEngine gameEngine; // Neue Instanzvariable
+    private final GameEngine gameEngine;
     private final Stage primaryStage;
     private Scene previousScene;
     private StackPane pauseOverlay;
@@ -24,7 +24,7 @@ public class PauseDialog {
 
     public PauseDialog(JumpAndRun jumpAndRun, GameEngine gameEngine, Stage primaryStage) {
         this.jumpAndRun = jumpAndRun;
-        this.gameEngine = gameEngine; // Initialisierung
+        this.gameEngine = gameEngine;
         this.primaryStage = primaryStage;
         this.buttonStyle = "-fx-font-size: 20px; -fx-text-fill: white; -fx-background-color: rgba(0, 0, 0, 0.5); -fx-font-family: 'Riffic Free Bold';";
     }
@@ -114,7 +114,7 @@ public class PauseDialog {
     }
 
     public AnimationTimer getGameLoop() {
-        return gameEngine.getGameLoop(); // Zugriff über gameEngine
+        return gameEngine.getGameLoop();
     }
 
     public DBDAO getDbDAO() {
