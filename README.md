@@ -64,7 +64,7 @@ Falls du IntelliJ IDEA oder Eclipse nutzt:
 
 ## <p align="center">🚨 FixMe – Noch in Arbeit! 🛠️</p>
 #### <p align="center">nach Abgabe am 14.03.</p>
-<!-- - 🔧 -->
+ - 🔧 Framerate verbessern
  
 # <p align="center">😊 Entwickler</p>
 - 👤 Ulf Treichel
